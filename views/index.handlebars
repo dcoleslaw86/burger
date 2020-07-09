@@ -1,78 +1,11 @@
 {{!-- <div class="container">
-    <section class="row">
-    <div class="">
-        <div class="container">
-            <div  class="col-md-12 text-center" id="top-bar">
-                <img src="/assets/img/burger.png" alt="Burger"><h1>Eat Da Burger!</h1>
-            </div>
-            
-            <div class="col-md-6 text-center" class="task">
-                <div class="">
-                <input class="input" type="text" placeholder="Enter a hamburger" id="newburger">
-				<button class="btn btn-danger create-form">
-                    <span class="" id=""><i class="fa fa-spoon" aria-hidden="true"></i></span>
-                </button>
-            </div>
-        </div>
-        </div>
-    </div>
-    </section>
-</div>
-
-<div class="container">
-<div class="">
-    <div class="">
-    <p>Burgers</p>
-    <p>
-    <ul>
-        {{#each burgers}}
-            {{#unless devoured}}
-                <span><strong> {{this.id}} - {{this.burger_name}} </strong></span>
-                <button type="button" class="btn btn-danger" id ="" data-id="{{this.id}}" data-newDevoured="{{devour}}"><span class=""> <i class="fa fa-spoon" aria-hidden="true"></i></span></button>
-                <hr>
-            {{/unless}}
-        {{/each}}
-    </ul>
-    </p>
-</div>
-
-<div class="">
-    <div class="">
-    <div class="">
-    <p>Devoured</p>
-    <p class="">
-    <ul>
-        {{#each burgers}}
-            {{#if devoured}}
-                <span><strong> {{this.id}} - {{this.burger_name}} </strong></span>
-                <button type="button" class="btn btn-danger" id ="" data-id="{{this.id}}" data-newDevoured="{{devour}}"><span class="icon is-small"> <i class="fas fa-trash-alt" aria-hidden="true"></i></span></span></button>
-                <hr>
-            {{/if}}
-        {{/each}}
-    </ul>
-    </p>
-</div>
-</div>
-</div> --}}
-
-
-
-<div class="container">
     <section class="hero is-warning is-medium">
     <div class="hero-body">
         <div class="container has-text-centered">
-            <div class="is-flex is-horizontal-center">
-
-            <figure class="image is-128x128">
+            <div class="is-horizontal-center">
                 <img src="/assets/img/burger.png" alt="Image Not Available">
-            </figure>
-
             </div>
-
-            <h1 class="title is-1">
-                Eat Da Burger!
-            </h1>
-            
+            <h1 class="title is-1">Eat Da Burger!</h1>
             <div class="field has-addons has-addons-centered">
                 <div class="control">
                     <input class="input" type="text" placeholder="Enter a hamburger" id="newburger">
@@ -80,12 +13,11 @@
             <div class="control">
                 <button class="button is-danger create-form">
                     <span class="icon is-small" id="">
-                        <i class="fas fa-check" aria-hidden="true"></i>
+                        <i class="fa fa-caret-square-o-right" aria-hidden="true"></i>
                     </span>
                 </button>
             </div>
         </div>
-            
         </div>
     </div>
     </section>
@@ -102,7 +34,7 @@
         {{#each burgers}}
             {{#unless devoured}}
                 <span><strong> {{this.id}} - {{this.burger_name}} </strong></span>
-                <button type="button" class="eatburger button is-danger" id ="eatbutton" data-id="{{this.id}}" data-newDevoured="{{devour}}"><span class="icon is-small"> <i class="fas fa-utensils" aria-hidden="true"></i></span></button>
+                <button type="button" class="eatburger button is-danger" id ="eatbutton" data-id="{{this.id}}" data-newDevoured="{{devour}}"><span class="icon is-small"> <i class="fa fa-spoon" aria-hidden="true"></i></span></button>
                 <hr>
             {{/unless}}
         {{/each}}
@@ -125,7 +57,7 @@
         {{#each burgers}}
             {{#if devoured}}
                 <span><strong> {{this.id}} - {{this.burger_name}} </strong></span>
-                <button type="button" class="trashburger button" id ="trashbutton" data-id="{{this.id}}" data-newDevoured="{{devour}}"><span class="icon is-small"> <i class="fas fa-trash-alt" aria-hidden="true"></i></span></span></button>
+                <button type="button" class="trashburger button" id ="trashbutton" data-id="{{this.id}}" data-newDevoured="{{devour}}"><span class="icon is-small"> <i class="fa fa-trash-o" aria-hidden="true"></i></span></span></button>
                 <hr>
             {{/if}}
         {{/each}}
@@ -135,5 +67,52 @@
 </article>
 </div>
 </div>
+</div> --}}
 
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center" id="top-bar">
+			<img src="/assets/images/burger.png" alt="burger" />
+			<h1> Eat-Da-Burger! </h1>
+		</div>
+		<div class="col-md-6 text-center" class="task">
+			<div class="row">
+			  {{#each burger_data}}
+			  	{{#unless this.devoured}}
+				<div class="col-md-9 text-center">
+					<pre>{{this.id}}. {{this.burger_name}}
+					</pre>
+				  		<!-- {{this.Date}} -->
+				</div>
+				<div class="col-md-3 text-center">
+					<form class="devour-form button-size">
+						<input input type="hidden" class="burger_id" type="text" value={{this.id}}><br>
+						<button type="submit" class="btn btn-default">Devour it!</button>
+					</form>
+				</div>
+				{{/unless}}
+			  {{/each}}
+			</div>
+		</div>
+		<div class="col-md-6 text-center" class="task">
+			  {{#each burger_data}}
+			  	{{#if this.devoured}}
+			  		<input class="form-control" type="text" placeholder="{{this.id}} . {{this.burger_name}}" readonly>
+				{{/if}}
+			  {{/each}}
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center enter_section">
+			<form action="/burgers/create" method="POST">
+				<input type="text" class="form-control" name="burger_name" value="" id="enter_text">
+				<button type="submit" class="btn btn-primary" id="text-enter-button">Submit</button>
+			</form>
+			<p>Enter a burger you want to eat Click the "Submit" button.</p>
+		</div>
+	</div>
 </div>
