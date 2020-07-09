@@ -1,4 +1,4 @@
-<div class="container">
+{{!-- <div class="container">
     <section class="row">
     <div class="">
         <div class="container">
@@ -51,6 +51,88 @@
         {{/each}}
     </ul>
     </p>
+</div>
+</div>
+</div> --}}
+
+
+
+<div class="container">
+    <section class="hero is-warning is-medium">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="is-flex is-horizontal-center">
+
+            <figure class="image is-128x128">
+                <img src="/assets/img/burger.png" alt="Image Not Available">
+            </figure>
+
+            </div>
+
+            <h1 class="title is-1">
+                Eat Da Burger!
+            </h1>
+            
+            <div class="field has-addons has-addons-centered">
+                <div class="control">
+                    <input class="input" type="text" placeholder="Enter a hamburger" id="newburger">
+                </div>
+            <div class="control">
+                <button class="button is-danger create-form">
+                    <span class="icon is-small" id="">
+                        <i class="fas fa-check" aria-hidden="true"></i>
+                    </span>
+                </button>
+            </div>
+        </div>
+            
+        </div>
+    </div>
+    </section>
+</div>
+<div class="container">
+<div class="columns">
+    <div class="column">
+        <article class="panel is-danger">
+    <p class="panel-heading">
+        Burgers
+    </p>
+    <p class="panel-tabs">
+    <ul>
+        {{#each burgers}}
+            {{#unless devoured}}
+                <span><strong> {{this.id}} - {{this.burger_name}} </strong></span>
+                <button type="button" class="eatburger button is-danger" id ="eatbutton" data-id="{{this.id}}" data-newDevoured="{{devour}}"><span class="icon is-small"> <i class="fas fa-utensils" aria-hidden="true"></i></span></button>
+                <hr>
+            {{/unless}}
+        {{/each}}
+    </ul>
+    </p>
+
+</article>
+</div>
+
+<div class="column">
+
+    <div class="columns">
+    <div class="column">
+        <article class="panel is-danger">
+    <p class="panel-heading">
+        Devoured
+    </p>
+    <p class="panel-tabs">
+    <ul>
+        {{#each burgers}}
+            {{#if devoured}}
+                <span><strong> {{this.id}} - {{this.burger_name}} </strong></span>
+                <button type="button" class="trashburger button" id ="trashbutton" data-id="{{this.id}}" data-newDevoured="{{devour}}"><span class="icon is-small"> <i class="fas fa-trash-alt" aria-hidden="true"></i></span></span></button>
+                <hr>
+            {{/if}}
+        {{/each}}
+    </ul>
+    </p>
+
+</article>
 </div>
 </div>
 
