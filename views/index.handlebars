@@ -1,0 +1,57 @@
+<div class="container">
+    <section class="row">
+    <div class="">
+        <div class="container">
+            <div  class="col-md-12 text-center" id="top-bar">
+                <img src="/assets/img/burger.png" alt="Burger"><h1>Eat Da Burger!</h1>
+            </div>
+            
+            <div class="col-md-6 text-center" class="task">
+                <div class="">
+                <input class="input" type="text" placeholder="Enter a hamburger" id="newburger">
+				<button class="btn btn-danger create-form">
+                    <span class="" id=""><i class="fa fa-spoon" aria-hidden="true"></i></span>
+                </button>
+            </div>
+        </div>
+        </div>
+    </div>
+    </section>
+</div>
+
+<div class="container">
+<div class="">
+    <div class="">
+    <p>Burgers</p>
+    <p>
+    <ul>
+        {{#each burgers}}
+            {{#unless devoured}}
+                <span><strong> {{this.id}} - {{this.burger_name}} </strong></span>
+                <button type="button" class="btn btn-danger" id ="" data-id="{{this.id}}" data-newDevoured="{{devour}}"><span class=""> <i class="fa fa-spoon" aria-hidden="true"></i></span></button>
+                <hr>
+            {{/unless}}
+        {{/each}}
+    </ul>
+    </p>
+</div>
+
+<div class="">
+    <div class="">
+    <div class="">
+    <p>Devoured</p>
+    <p class="">
+    <ul>
+        {{#each burgers}}
+            {{#if devoured}}
+                <span><strong> {{this.id}} - {{this.burger_name}} </strong></span>
+                <button type="button" class="btn btn-danger" id ="" data-id="{{this.id}}" data-newDevoured="{{devour}}"><span class="icon is-small"> <i class="fas fa-trash-alt" aria-hidden="true"></i></span></span></button>
+                <hr>
+            {{/if}}
+        {{/each}}
+    </ul>
+    </p>
+</div>
+</div>
+
+</div>
