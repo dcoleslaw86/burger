@@ -1,7 +1,6 @@
 body {
-    width: 99%;
     height: 900px;
-    background-color: #fc6;
+    background-color: rgb(255, 255, 255);
   }
   
   #top-bar {
@@ -21,18 +20,14 @@ body {
     border: 0;
   }
   
-  @media (min-width: 1200px) {
-    .container {
+   .container {
       width: 990px;
     }
-  }
   
-  @media (min-width: 992px) {
-    .container {
+  .container {
       width: 990px;
       justify-content: center;
     }
-  }
   
   .enter_section {
     margin-top: 30px;
